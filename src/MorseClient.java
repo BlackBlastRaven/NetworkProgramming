@@ -24,7 +24,7 @@ public class MorseClient {
 
             MorsePacket morse = new MorsePacket();
             morse.setNaturallanguage(lineStr);
-            oos.writeObject(lineStr);
+            oos.writeObject(morse);
             oos.flush();
 
             /* サーバから判定結果を受信する */

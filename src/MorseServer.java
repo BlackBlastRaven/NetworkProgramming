@@ -30,8 +30,8 @@ public class MorseServer {
 
             String naturallanguage = receivepacket.getNaturallanguage();
             String morsesignal = receivepacket.getMorsesignal();
-            String outputnatural = "";
-            String outputmorse = "";
+            String outputnatural = naturallanguage;
+            String outputmorse = morsesignal;
             System.out.println("受信した自然言語は" + naturallanguage);
             System.out.println("受信したモールス信号" + morsesignal);
 
@@ -159,7 +159,7 @@ public class MorseServer {
             String[] naturalArray = naturallanguage.split("");
             StringBuilder sb = new StringBuilder();
             for (String s : naturalArray) {
-                sb.append(languageToMorse.get(s));
+                sb.append(languageToMorse.get(s)).append(" ");
             }
             outputmorse = new String(sb);
 
@@ -169,7 +169,7 @@ public class MorseServer {
             for (String s : naturalArray) {
                 sbm.append(languageToMorse.get(s));
             }
-            outputmorse = new String(sbm);
+            //outputmorse = new String(sbm);
 
             /* 判定結果をクライアントに送信する */
             ObjectOutputStream oos =
