@@ -32,26 +32,10 @@ public class FacesAWTMain {
         private int xStart;
         private int yStart;
         private FaceObj faceObj1;
-        private FaceObj faceObj2;
-        private FaceObj faceObj3;
-        private FaceObj faceObj4;
-        private FaceObj faceObj5;
-        private FaceObj faceObj6;
-        private FaceObj faceObj7;
-        private FaceObj faceObj8;
-        private FaceObj faceObj9;
+        FaceObj[] faceObjects = new FaceObj[9];
 
         FaceFrame() {
-            faceObj1 = new FaceObj(50,50,250,50,50,250,250,250,100,100,20,200,100,20,100,90,110,60,200,150,170,230,200);
-            faceObj2 = new FaceObj(250,50,500,50,250,50,500,50,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj3 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj4 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj5 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj6 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj7 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj8 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-            faceObj9 = new FaceObj(200,40,200,240,0,40,0,240,20,60,10,160,60,10,100,90,110,10,180,100,170,190,180);
-
+            //faceObj1 = new FaceObj();
         }
 
         public void paint(Graphics g) {
@@ -63,8 +47,20 @@ public class FacesAWTMain {
             yStart = 50;
 
             //FaceObj fobj = new FaceObj(200,200,50,50);
-            //FaceObj faceObj2 = new FaceObj(200,200,250,50);
+            //FaceObj faceObj1 = new FaceObj(50, 50, -60, 90, 30, 45, 20, 0, 55, 70);
             //fobj.drawRim();
+/*
+            for (FaceObj faceObj : faceObjects) {
+                faceObj = new FaceObj(50, 50, -60, 90, 30, 45, 20, 0, 55, 70);
+                faceObj.drawAll(g);
+            }
+*/
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    faceObjects[j] = new FaceObj((j + 1) * 200, (i + 1) * 200, -50 + (int) (Math.random() * 20), 90, 30, 45, 20, 0, 55, 70);
+                    faceObjects[j].drawAll(g);
+                }
+            }
 
             /*
             drawRim(g);
@@ -74,37 +70,8 @@ public class FacesAWTMain {
             drawMouth(g, 100);
 
              */
-            faceObj1.drawAll(g);
-            faceObj2.drawAll(g);
-
+            //faceObj1.drawAll(g);
         }
-/*
-        public void drawRim(Graphics g) {  // wが横幅、hが縦幅
-            g.drawLine(50, 50, 50 + w, 50);
-            g.drawLine(50, 50, 50, 50 + h);
-            g.drawLine(50, 50 + h, 50 + w, 50 + h);
-            g.drawLine(50 + w, 50, 50 + w, 50 + h);
-        }
-
-        public void drawBrow(Graphics g, int bx) { // xは目の幅 呼ばれる方(=定義する方)
-
-        }
-
-        public void drawNose(Graphics g, int nx) { // xは鼻の長さ
-
-        }
-
-        public void drawEye(Graphics g, int r) { // rは目の半径
-            g.drawOval(xStart + 45, yStart + 65, r, r);
-
-        }
-
-        public void drawMouth(Graphics g, int mx) { // xは口の幅
-            int xMiddle = 50 + w / 2;
-            int yMiddle = 50 + h - 30;
-            g.drawLine(xMiddle - mx / 2, yMiddle, xMiddle + mx / 2, yMiddle);
-        }
-*/
     }//FaceFrame end
 
     //Faceクラスを作ってみよう。
@@ -115,118 +82,105 @@ public class FacesAWTMain {
         int xStart = 50;
         int yStart = 50;
 */
-        int rimRightTopX;
-        int rimRightTopY;
-
-        int rimRightBottomX;
-        int rimRightBottomY;
+        int centerX;
+        int centerY;
 
         int rimLeftTopX;
         int rimLeftTopY;
 
-        int rimLeftBottomX;
-        int rimLeftBottomY;
-
-
-        int leftEyeX;
-        int leftEyeY;
-        int leftEyeR;
-
-        int rightEyeX;
-        int rightEyeY;
-        int rightEyeR;
-
-        int noseTop;
-        int noseLeft;
-        int noseRight;
-
-        int mouthLeftX;
-        int mouthLeftY;
-
-        int mouthCenterX;
-        int mouthCenterY;
-
-        int mouthRightX;
-        int mouthRightY;
-
-        int rimHight;
+        int rimHeight;
         int rimWidth;
+
+        int eyeY;
+        int eyeWidth;
+        int eyeR;
+
+        int noseWidth;
+        int noseHeight;
+
+        int mouthX;
+        int mouthY;
+        int mouthWidth;
+
+        //int mouthLeftX;
+        //int mouthLeftY;
+
+        //int mouthCenterX;
+        //int mouthCenterY;
+
+        //int mouthRightX;
+        //int mouthRightY;
+
 
         /*
         輪郭の開始線、輪郭の縦幅と横幅
         (目のx,y座標,大きさ)これが２つ
         鼻の３座標(三角形)
         口の開始点,中間点,終了点それぞれの座標
+
+
+        輪郭の左上の位置
+        輪郭の高さと幅
+        目の幅と高さと大きさ
+        鼻の高さと幅
+        口の高さと幅
+
          */
-        public FaceObj(int rimLeftTopX, int rimLeftTopY, int rimRightTopX, int rimRightTopY, int rimLeftBottomX, int rimLeftBottomY, int rimRightBottomX, int rimRightBottomY, int leftEyeX, int leftEyeY, int leftEyeR, int rightEyeX, int rightEyeY, int rightEyeR, int noseTop, int noseLeft, int noseRight, int mouthLeftX, int mouthLeftY, int mouthCenterX, int mouthCenterY, int mouthRightX, int mouthRightY) {
-            this.rimRightTopX = rimRightTopX;
-            this.rimRightTopY = rimRightTopY;
-            this.rimRightBottomX = rimRightBottomX;
-            this.rimRightBottomY = rimRightBottomY;
+        public FaceObj(int rimLeftTopX, int rimLeftTopY, int eyeY, int eyeWidth, int eyeR, int noseHeight, int noseWidth, int mouthX, int mouthY, int mouthWidth) {
+            this.rimHeight = 200;
+            this.rimWidth = 200;
+            this.centerX = rimLeftTopX + (rimWidth / 2);
+            this.centerY = rimLeftTopY + (rimHeight / 2);
+
             this.rimLeftTopX = rimLeftTopX;
             this.rimLeftTopY = rimLeftTopY;
-            this.rimLeftBottomX = rimLeftBottomX;
-            this.rimLeftBottomY = rimLeftBottomY;
-            this.leftEyeX = leftEyeX;
-            this.leftEyeY = leftEyeY;
-            this.leftEyeR = leftEyeR;
-            this.rightEyeX = rightEyeX;
-            this.rightEyeY = rightEyeY;
-            this.rightEyeR = rightEyeR;
-            this.noseTop = noseTop;
-            this.noseLeft = noseLeft;
-            this.noseRight = noseRight;
-            this.mouthLeftX = mouthLeftX;
-            this.mouthLeftY = mouthLeftY;
-            this.mouthCenterX = mouthCenterX;
-            this.mouthCenterY = mouthCenterY;
-            this.mouthRightX = mouthRightX;
-            this.mouthRightY = mouthRightY;
-
-
+            this.eyeY = eyeY + centerY;
+            this.eyeR = eyeR;
+            this.eyeWidth = eyeWidth;
+            this.noseHeight = noseHeight;
+            this.noseWidth = noseWidth;
+            this.mouthX = mouthX + centerX;
+            this.mouthY = mouthY + centerY;
+            this.mouthWidth = mouthWidth;
         }
 
+        //public FaceObj(int rimLeftTopX, int rimLeftTopY)
+
         public void drawAll(Graphics g) {
+            centerX = rimLeftTopX + (rimWidth / 2);
             drawRim(g);
-            drawBrow(g, 30);
-            drawEye(g, leftEyeX, leftEyeY, leftEyeR, rightEyeX, rightEyeY, rightEyeR);
-            drawNose(g, 40);
-            drawMouth(g, mouthLeftX, mouthLeftY, mouthCenterX, mouthCenterY, mouthRightX, mouthRightY);
+            //drawBrow(g, 30);
+            drawEye(g, eyeY, eyeWidth, eyeR);
+            drawNose(g, noseHeight, noseWidth);
+            drawMouth(g, mouthX, mouthY, mouthWidth);
         }
 
 
         public void drawRim(Graphics g) {  // wが横幅、hが縦幅
-            g.drawLine(rimLeftTopX, rimLeftTopY, rimLeftTopX+rimWidth, rimLeftTopY);
-            g.drawLine(rimLeftTopX+rimWidth, rimLeftTopY, rimLeftTopX+rimWidth, rimLeftTopY+rimHight);
-            g.drawLine(rimLeftTopX, rimLeftTopY, rimLeftTopX+rimWidth, rimLeftTopY);
-            g.drawLine(rimLeftTopX, rimLeftTopY, rimLeftTopX+rimWidth, rimLeftTopY);
+            g.drawLine(rimLeftTopX, rimLeftTopY, rimLeftTopX + rimWidth, rimLeftTopY);
+            g.drawLine(rimLeftTopX + rimWidth, rimLeftTopY, rimLeftTopX + rimWidth, rimLeftTopY + rimHeight);
+            g.drawLine(rimLeftTopX + rimWidth, rimLeftTopY + rimHeight, rimLeftTopX, rimLeftTopY + rimHeight);
+            g.drawLine(rimLeftTopX, rimLeftTopY + rimHeight, rimLeftTopX, rimLeftTopY);
         }
-
-        public void drawRim2(Graphics g) {  // wが横幅、hが縦幅
-            g.drawLine(rimLeftTopX, rimLeftTopY, rimRightTopX, rimRightTopY);
-            g.drawLine(rimRightTopX, rimRightTopY, rimRightBottomX, rimRightBottomY);
-            g.drawLine(rimRightBottomX, rimRightBottomY, rimLeftBottomX, rimLeftBottomY);
-            g.drawLine(rimLeftBottomX, rimLeftBottomY, rimLeftTopX, rimLeftTopY);
-        }
-
 
 
         public void drawBrow(Graphics g, int bx) { // xは目の幅 呼ばれる方(=定義する方)
 
         }
 
-        public void drawNose(Graphics g, int nx) { // xは鼻の長さ
-
+        public void drawNose(Graphics g, int noseHeight, int noseWidth) { // xは鼻の長さ
+            g.drawLine(centerX, centerY - (noseHeight / 2), centerX + (noseWidth / 2), centerY + (noseHeight / 2));
+            g.drawLine(centerX + (noseWidth / 2), centerY + (noseHeight / 2), centerX - (noseWidth / 2), centerY + (noseHeight / 2));
+            g.drawLine(centerX - (noseWidth / 2), centerY + (noseHeight / 2), centerX, centerY - (noseHeight / 2));
         }
 
-        public void drawEye(Graphics g, int leftEyeX, int leftEyeY, int leftEyeR, int rightEyeX, int rightEyeY, int rightEyeR) {
-            g.drawOval(leftEyeX, leftEyeY, leftEyeR, leftEyeR);
-            g.drawOval(rightEyeX, rightEyeY, rightEyeR, rightEyeR);
+        public void drawEye(Graphics g, int eyeY, int eyeWidth, int eyeR) {
+            g.drawOval(centerX - (eyeWidth / 2) - (eyeR / 2), eyeY, eyeR, eyeR);
+            g.drawOval(centerX + (eyeWidth / 2) - (eyeR / 2), eyeY, eyeR, eyeR);
         }
 
-        public void drawMouth(Graphics g, int mouthLeftX, int mouthLeftY, int mouthCenterX, int mouthCenterY, int mouthRightX, int mouthRightY) {
-            g.drawLine(mouthLeftX, mouthLeftY, mouthCenterX, mouthCenterY);
-            g.drawLine(mouthCenterX, mouthCenterY, mouthRightX, mouthRightY);
+        public void drawMouth(Graphics g, int mouthX, int mouthY, int mouthWidth) {
+            g.drawLine(mouthX - (mouthWidth / 2), mouthY, mouthX + (mouthWidth / 2), mouthY);
         }
 
     }
